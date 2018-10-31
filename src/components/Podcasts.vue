@@ -1,5 +1,7 @@
 <template>
-    <h1>Podcasts</h1>
+  <v-app>
+      <h1>teste dsaiohbduyas</h1>
+  </v-app>
 </template>
 
 <script>
