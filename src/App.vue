@@ -1,18 +1,18 @@
 <template>
   <v-app>
-    <v-container pa-0 fluid text-xs-center>
+    <v-container pa-0 fluid text-xs-center color="primary">
       <v-layout row wrap>
         <div class="bg-top">
-          <div class="blackboard">
-            <div class="blackboard-text">55 dias até o natal!</div>
+          <div class="blackboard hidden-xs-only">
+            <div class="blackboard-text text-xs-center">{{daysUntil()}}</div>
           </div>
         </div>
       </v-layout>
       <v-layout row class="toolbar">
-        <v-toolbar class="toolbar-items-center">
+        <v-toolbar class="toolbar-items-center" color="primary">
           <v-toolbar-items class="hidden-sm-and-down">
             <!-- Obrigado vianinha -->
-            <v-btn ma-0 flat v-for="item in menu" :key="item" @click="goTo(item.path)">
+            <v-btn color="white" ma-0 flat v-for="item in menu" :key="item" @click="goTo(item.path)">
               {{ item.name }}  
             </v-btn>  
           </v-toolbar-items>
@@ -42,18 +42,24 @@
   background-image: url("../public/assets/images/blackboard.png");
   background-size: contain;
   z-index: 2;
-  width: 180px;
-  height: 180px;
+  width: 210px;
+  height: 210px;
 }
 
 .blackboard-text {
   transform: rotate(-2deg);
   font-family: cholk;
   color: white;
-  margin-top: 68px;
-  padding: 15px;
   font-size: 18px;
   user-select: none;
+  padding-top: 58px;
+  padding-bottom: 20px;
+  padding-left: 9px;
+  padding-right: 9px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
 }
 
 .toolbar {
@@ -115,6 +121,18 @@ export default {
   methods: {
     goTo: function(path) {
       this.$router.push({ name: path });
+    },
+    daysUntil: () => {
+      let today = new Date();
+      const year = today.getFullYear();
+      const day = 1000 * 60 * 60 * 24;
+      let christmas = new Date(year, 11, 25);
+      if (today.getMonth() == 11 && today.getDate() >= 25)
+        christmas.setFullYear(year + 1);
+      const result = Math.round(Math.abs(today.getTime() - christmas.getTime()) / day);
+      if (result == 365)
+        return 'FELIZ NATAL!'
+      return result + (result > 1 ? " dias " : " dia ") + "até o natal!";
     }
   }
 };
