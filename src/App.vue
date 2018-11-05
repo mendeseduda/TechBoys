@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-container pa-0 fluid text-xs-center color="primary">
+    <v-container pa-0 fluid text-xs-center>
       <v-layout row wrap>
         <div class="bg-top">
           <div class="blackboard hidden-xs-only">
@@ -12,9 +12,10 @@
         <v-toolbar class="toolbar-items-center" color="primary">
           <v-toolbar-items class="hidden-sm-and-down">
             <!-- Obrigado vianinha -->
-            <v-btn color="white" ma-0 flat v-for="item in menu" :key="item" @click="goTo(item.path)">
-              {{ item.name }}  
-            </v-btn>  
+            <div class="nav-btn" v-for="item in menu" :key="item" @click="goTo(item.path)">
+              {{ item.name }}
+              <div class="nav-effect"></div>  
+            </div>  
           </v-toolbar-items>
         </v-toolbar>
       </v-layout>
@@ -71,6 +72,26 @@
 
 .toolbar-items-center > div {
   justify-content: center !important;
+}
+
+.nav-btn{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  width: 110px;
+}
+
+.nav-btn:hover{
+  background-color: rgb(68, 68, 68);
+}
+
+.nav-effect{
+  background-image: url("../public/assets/images/icon.png");
+  width: 10px;
+  height: 10px;
 }
 </style>
 

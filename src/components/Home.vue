@@ -1,5 +1,5 @@
 <template>
-    <v-layout row wrap fill-height :style="{ backgroundColor: this.$vuetify.theme.secondary }">
+    <v-layout row wrap fill-height :style="{ backgroundColor: this.$vuetify.theme.accent }">
         <v-container mt-5 grid-list-xs>
             <v-layout row justify-center>
                 <v-flex xs12 sm12 md12 xl8>
