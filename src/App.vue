@@ -151,7 +151,7 @@ export default {
       this.$router.push({ name: path });
     },
     daysUntil: () => {
-      let today = new Date();
+      const today = new Date();
       const year = today.getFullYear();
       const day = 1000 * 60 * 60 * 24;
       let christmas = new Date(year, 11, 25);
