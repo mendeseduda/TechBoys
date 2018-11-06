@@ -12,14 +12,16 @@
         <v-toolbar class="toolbar-items-center" color="primary">
           <v-toolbar-items class="hidden-sm-and-down">
             <!-- Obrigado vianinha -->
-            <div class="nav-btn" v-for="item in menu" :key="item" @click="goTo(item.path)">
-              {{ item.name }}
-              <div class="nav-effect"></div>  
+            <div class="nav-btn" v-for="item in menu" :key="item" @click="goTo(item.path)" @mouseover="incrementWidth()">
+                <div>
+                  {{ item.name }}
+                <div class="nav-effect"></div> 
+              </div> 
             </div>  
           </v-toolbar-items>
         </v-toolbar>
       </v-layout>
-      <router-view></router-view>
+      <router-view :style="{ backgroundColor: this.$vuetify.theme.accent }"></router-view>
     </v-container>
   </v-app>
 </template>
@@ -74,24 +76,29 @@
   justify-content: center !important;
 }
 
-.nav-btn{
+.nav-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: white;
   cursor: pointer;
-  width: 110px;
+  padding: 0 10px;
+  font-size: 16px;
 }
 
-.nav-btn:hover{
-  background-color: rgb(68, 68, 68);
+.nav-effect {
+  display: block;
+  background-color: white;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  -webkit-transition: all 0.4 ease;
+  transition: all 0.4s ease;
 }
 
-.nav-effect{
-  background-image: url("../public/assets/images/icon.png");
-  width: 10px;
-  height: 10px;
+.nav-btn:hover .nav-effect {
+  transform: scaleX(1);
 }
 </style>
 
@@ -121,7 +128,7 @@ export default {
           path: ""
         },
         {
-          name: "Luk",
+          name: "Luk Pics",
           path: ""
         },
         {
@@ -150,9 +157,10 @@ export default {
       let christmas = new Date(year, 11, 25);
       if (today.getMonth() == 11 && today.getDate() >= 25)
         christmas.setFullYear(year + 1);
-      const result = Math.round(Math.abs(today.getTime() - christmas.getTime()) / day);
-      if (result == 365)
-        return 'FELIZ NATAL!'
+      const result = Math.round(
+        Math.abs(today.getTime() - christmas.getTime()) / day
+      );
+      if (result == 365) return "FELIZ NATAL!";
       return result + (result > 1 ? " dias " : " dia ") + "até o natal!";
     }
   }
