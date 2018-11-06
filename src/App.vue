@@ -114,7 +114,7 @@ export default {
         },
         {
           name: "Julianimals",
-          path: ""
+          path: "Julianimals"
         },
         {
           name: "Lendas Urbanas",
