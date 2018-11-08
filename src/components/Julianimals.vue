@@ -1,23 +1,52 @@
 <template>
     <v-layout row wrap fill-height :style="{ backgroundColor: this.$vuetify.theme.accent }">
         <v-container mt-5 grid-list-xs>
-            <v-layout row justify-center>
-                <v-flex xs12 sm12 md12 xl8>
-                        <v-card fill-height>
-                            <v-layout row>
-                                <v-flex xs6>
+            <v-layout column>
+                <v-flex py-2>
+                        <v-card>
+                            <v-layout row align-center fill-height> 
+                                <v-flex xs3>
                                     
-                                            <v-img
-                                            class="white--text"
-                                            width="300"
-                                            src='../../public/assets/images/musastranho.jpg'>
-                                            </v-img>
-                                        
+                                            <img  style="border-radius:50%" 
+                                            src='../../public/assets/images/musastranho.jpg'
+                                            height="200"
+                                            width="200"
+                                            >
+                                </v-flex >
+                                <v-flex xs9>
+                                    <v-card-text>
+                                        <h1 class="text-md-center">Julharanho</h1>
+                                        <v-card-text style="text-align: justify;" class="gray--text">
+                                           
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.   
+                                           
+                                        </v-card-text>
+                                    </v-card-text>
+
                                 </v-flex>
-                                <v-flex>
-                                    <v-card-title>
-                                        <span class="gray--text" align-center>AAAAA</span>
-                                    </v-card-title>
+                            </v-layout>
+                        </v-card>
+                </v-flex>
+                <v-flex py-2>
+                        <v-card >
+                            <v-layout row align-center reverse>
+                                <v-flex xs3 align-content-space-around>
+                                        <v-card style="border-radius:50%;" fluid>
+                                            <v-img   
+                                            src='../../public/assets/images/musastranho.jpg'>
+                                            </v-img>        
+                                        </v-card>
+                                </v-flex >
+                                <v-flex xs9>
+                                    <v-card-text>
+                                        <h1 class="text-md-center">Julharanho</h1>
+                                        <v-card-text style="text-align: justify;">
+                                           
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.   
+                                           
+                                        </v-card-text>
+                                    </v-card-text>
+
                                 </v-flex>
                             </v-layout>
                         </v-card>
