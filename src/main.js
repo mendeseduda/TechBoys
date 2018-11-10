@@ -4,7 +4,7 @@ import App from './App.vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.css'
 
-import router from './router/index'
+import router from './router'
 
 Vue.use(Vuetify, {
   theme: {

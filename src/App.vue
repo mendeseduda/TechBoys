@@ -22,6 +22,22 @@
         </v-toolbar>
       </v-layout>
       <router-view :style="{ backgroundColor: this.$vuetify.theme.accent }"></router-view>
+        <v-footer dark height="auto">
+          <v-card flat tile class="blue darken-4 white--text text-xs-center">
+            <v-card-text>
+              <v-btn v-for="icon in icons" :key="icon" class="mx-3 white--text" icon >
+                <v-icon size="24px">{{ icon }}</v-icon>
+              </v-btn>
+            </v-card-text>
+            <v-card-text class="white--text pt-0">
+              Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            </v-card-text>
+            <v-divider></v-divider>
+            <v-card-text class="white--text">
+              &copy;2018 — <strong>TechBoys</strong>
+            </v-card-text>
+          </v-card>
+        </v-footer>
     </v-container>
   </v-app>
 </template>
@@ -69,7 +85,6 @@
   z-index: 100;
   position: sticky;
   top: 0;
-  background-color: white;
 }
 
 .toolbar-items-center > div {
@@ -81,20 +96,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #ffffff;
   cursor: pointer;
   padding: 0 10px;
-  font-size: 16px;
+  font-size: 1.2rem;
 }
 
 .nav-effect {
   display: block;
-  background-color: white;
+  background-color: #FFA000;
   width: 100%;
   transform: scaleX(0);
   height: 2px;
   -webkit-transition: all 0.4 ease;
-  transition: all 0.4s ease;
+  transition: all 0.25s ease;
 }
 
 .nav-btn:hover .nav-effect {
@@ -103,6 +118,8 @@
 </style>
 
 <script>
+import goTo from './router/goTo';
+
 export default {
   data() {
     return {
@@ -143,13 +160,18 @@ export default {
           name: "Sobre Nós",
           path: ""
         }
+      ],
+      icons: [
+        'fab fa-facebook',
+        'fab fa-twitter',
+        'fab fa-google-plus',
+        'fab fa-linkedin',
+        'fab fa-instagram'
       ]
     };
-  },
+  },  
   methods: {
-    goTo: function(path) {
-      this.$router.push({ name: path });
-    },
+    goTo: goTo,
     daysUntil: () => {
       const today = new Date();
       const year = today.getFullYear();
