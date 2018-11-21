@@ -12,14 +12,36 @@
         <v-toolbar class="toolbar-items-center" color="primary">
           <v-toolbar-items class="hidden-sm-and-down">
             <!-- Obrigado vianinha -->
-            <div class="nav-btn" v-for="item in menu" :key="item" @click="goTo(item.path)">
-              {{ item.name }}
-              <div class="nav-effect"></div>  
+            <div class="nav-btn" v-for="item in menu" :key="item" @click="goTo(item.path)" @mouseover="incrementWidth()">
+                <div>
+                  {{ item.name }}
+                <div class="nav-effect"></div> 
+              </div> 
             </div>  
           </v-toolbar-items>
         </v-toolbar>
       </v-layout>
-      <router-view></router-view>
+      <router-view :style="{ backgroundColor: this.$vuetify.theme.accent }"></router-view>
+        <v-footer dark height="auto">
+          <v-layout row wrap>
+            <v-flex xs12>
+              <v-card flat tile class="blue darken-4 white--text text-xs-center">
+                <v-card-text>
+                  <v-btn v-for="icon in icons" :key="icon" class="mx-3 white--text" icon >
+                    <v-icon size="24px">{{ icon }}</v-icon>
+                  </v-btn>
+                </v-card-text>
+                <v-card-text class="white--text pt-0">
+                  Desenvolvido por: Fudidos Crew
+                </v-card-text>
+                <v-divider></v-divider>
+                <v-card-text class="white--text">
+                  &copy;2018 — <strong>TechBoys</strong>
+                </v-card-text>
+              </v-card>              
+            </v-flex>            
+          </v-layout>
+        </v-footer>
     </v-container>
   </v-app>
 </template>
@@ -67,35 +89,41 @@
   z-index: 100;
   position: sticky;
   top: 0;
-  background-color: white;
 }
 
 .toolbar-items-center > div {
   justify-content: center !important;
 }
 
-.nav-btn{
+.nav-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #ffffff;
   cursor: pointer;
-  width: 110px;
+  padding: 0 10px;
+  font-size: 1.2rem;
 }
 
-.nav-btn:hover{
-  background-color: rgb(68, 68, 68);
+.nav-effect {
+  display: block;
+  background-color: #FFA000;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  -webkit-transition: all 0.4 ease;
+  transition: all 0.25s ease;
 }
 
-.nav-effect{
-  background-image: url("../public/assets/images/icon.png");
-  width: 10px;
-  height: 10px;
+.nav-btn:hover .nav-effect {
+  transform: scaleX(1);
 }
 </style>
 
 <script>
+import goTo from './router/goTo';
+
 export default {
   data() {
     return {
@@ -121,7 +149,7 @@ export default {
           path: ""
         },
         {
-          name: "Luk",
+          name: "Luk Pics",
           path: ""
         },
         {
@@ -136,23 +164,27 @@ export default {
           name: "Sobre Nós",
           path: ""
         }
+      ],
+      icons: [
+        'fab fa-facebook',
+        'fab fa-twitter',
+        'fab fa-instagram'
       ]
     };
-  },
+  },  
   methods: {
-    goTo: function(path) {
-      this.$router.push({ name: path });
-    },
+    goTo: goTo,
     daysUntil: () => {
-      let today = new Date();
+      const today = new Date();
       const year = today.getFullYear();
       const day = 1000 * 60 * 60 * 24;
       let christmas = new Date(year, 11, 25);
       if (today.getMonth() == 11 && today.getDate() >= 25)
         christmas.setFullYear(year + 1);
-      const result = Math.round(Math.abs(today.getTime() - christmas.getTime()) / day);
-      if (result == 365)
-        return 'FELIZ NATAL!'
+      const result = Math.round(
+        Math.abs(today.getTime() - christmas.getTime()) / day
+      );
+      if (result == 365) return "FELIZ NATAL!";
       return result + (result > 1 ? " dias " : " dia ") + "até o natal!";
     }
   }
