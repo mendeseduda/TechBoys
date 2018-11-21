@@ -9,8 +9,9 @@ import router from './router'
 Vue.use(Vuetify, {
   theme: {
     primary: '#0059B2',
-    secondary: '#3f657e',
+    secondary: '#007FFF',
     accent: '#CFECFF',
+    orangeP: '#f50',
     error: ''
   }
 })
