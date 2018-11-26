@@ -12,7 +12,7 @@
         <v-toolbar class="toolbar-items-center" color="primary">
           <v-toolbar-items class="hidden-sm-and-down">
             <!-- Obrigado vianinha -->
-            <div class="nav-btn" v-for="item in menu" :key="item" @click="goTo(item.path)" @mouseover="incrementWidth()">
+            <div class="nav-btn" v-if="item.visible" v-for="item in menu" :key="item.name" @click="goTo(item.path)">
                 <div>
                   {{ item.name }}
                 <div class="nav-effect"></div> 
@@ -27,8 +27,8 @@
             <v-flex xs12>
               <v-card flat tile class="blue darken-4 white--text text-xs-center">
                 <v-card-text>
-                  <v-btn v-for="icon in icons" :key="icon" class="mx-3 white--text" icon >
-                    <v-icon size="24px">{{ icon }}</v-icon>
+                  <v-btn v-for="icon in icons" :key="icon" class="mx-3 white--text" icon @click="goTo(icon.path)">
+                    <v-icon size="24px">{{ icon.code }}</v-icon>
                   </v-btn>
                 </v-card-text>
                 <v-card-text class="white--text pt-0">
@@ -108,12 +108,12 @@
 
 .nav-effect {
   display: block;
-  background-color: #FFA000;
+  background-color: #ffa000;
   width: 100%;
   transform: scaleX(0);
   height: 2px;
   -webkit-transition: all 0.4 ease;
-  transition: all 0.25s ease;
+  transition: all 0.1s ease;
 }
 
 .nav-btn:hover .nav-effect {
@@ -122,7 +122,7 @@
 </style>
 
 <script>
-import goTo from './router/goTo';
+import goTo from "./router/goTo";
 
 export default {
   data() {
@@ -130,61 +130,73 @@ export default {
       menu: [
         {
           name: "Home",
-          path: "Home"
+          path: "Home",
+          visible: true
         },
         {
           name: "Canal",
-          path: ""
+          path: "",
+          visible: true
         },
         {
           name: "Encontro",
-          path: ""
+          path: "",
+          visible: false
         },
         {
           name: "Julianimals",
-          path: "Julianimals"
+          path: "Julianimals",
+          visible: true
         },
         {
           name: "Lendas Urbanas",
-          path: ""
+          path: "",
+          visible: false
         },
         {
           name: "Luk Pics",
-          path: ""
+          path: "Luk",
+          visible: true
         },
         {
-          name: "Podcast",
-          path: "Podcasts"
+          name: "Monistorinhas",
+          path: "Podcasts",
+          visible: true
         },
         {
           name: "Reviews",
-          path: ""
+          path: "",
+          visible: false
         },
         {
           name: "Sobre Nós",
-          path: ""
+          path: "About",
+          visible: true
         }
       ],
       icons: [
-        'fab fa-facebook',
-        'fab fa-twitter',
-        'fab fa-instagram'
+        { code: "fab fa-facebook", path: "Wagner" },
+        { code: "fab fa-twitter", path: "John" },
+        { code: "fab fa-instagram", path: "Secreto" }
       ]
     };
-  },  
+  },
   methods: {
     goTo: goTo,
     daysUntil: () => {
       const today = new Date();
       const year = today.getFullYear();
       const day = 1000 * 60 * 60 * 24;
-      let christmas = new Date(year, 11, 25);
+      const christmas = new Date(year, 11, 25);
+
       if (today.getMonth() == 11 && today.getDate() >= 25)
         christmas.setFullYear(year + 1);
       const result = Math.round(
         Math.abs(today.getTime() - christmas.getTime()) / day
       );
+
       if (result == 365) return "FELIZ NATAL!";
+
       return result + (result > 1 ? " dias " : " dia ") + "até o natal!";
     }
   }
