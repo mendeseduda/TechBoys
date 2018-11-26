@@ -6,7 +6,7 @@
             </v-btn>
         </v-layout>        
         <v-layout mb-5 justify-center row wrap class="limit">
-            <v-img v-if="show" contain :src="image" height="600px"></v-img>
+            <v-img v-if="show" contain :src="image" height="500px"></v-img>
             <div v-if="!show" style="max-width: 1200px;">
                 <v-layout row wrap justify-center>
                     <v-flex v-for="i in 16" :key="i" xs3 @click="showImage('../../public/assets/images/luk/luk' + i + '.jpg')" style="cursor: pointer;">
