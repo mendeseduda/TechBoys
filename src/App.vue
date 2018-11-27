@@ -32,7 +32,7 @@
                   </v-btn>
                 </v-card-text>
                 <v-card-text class="white--text pt-0">
-                  Desenvolvido por: Fudidos Crew
+                  Desenvolvido por: Nem tão bem sucedidos Crew
                 </v-card-text>
                 <v-divider></v-divider>
                 <v-card-text class="white--text">
@@ -135,7 +135,7 @@ export default {
         },
         {
           name: "Canal",
-          path: "",
+          path: "Canal",
           visible: true
         },
         {

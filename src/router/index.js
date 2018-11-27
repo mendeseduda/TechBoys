@@ -7,6 +7,7 @@ import Home from './../components/Home'
 import Julianimals from './../components/Julianimals'
 import About from './../components/About'
 import Luk from './../components/Luk'
+import Canal from './../components/Canal'
 
 import Wagner from './../components/shhhhh/Wagner'
 import John from './../components/shhhhh/John'
@@ -20,6 +21,11 @@ export default new VueRouter({
             path: '/',
             name: Home.name,
             component: Home
+        },
+        {
+            path: '/Canal',
+            name: Canal.name,
+            component: Canal
         },
         {
             path: '/podcasts',
@@ -56,6 +62,7 @@ export default new VueRouter({
             name: Luk.name,
             component: Luk
         }
+ 
     ],
     scrollBehavior (to, from, savedPosition) {
         if (savedPosition) {

@@ -18,7 +18,7 @@
 
 .text{
     text-align: center; color:#424242;
-    text-align: center;
+    
 }
 
 
@@ -41,7 +41,7 @@
                                               src='../../public/assets/gifs/juliana-bica.gif'>
                                             </v-img>  
                                 </v-flex >
-                                <v-flex md8 xs12  >
+                                <v-flex md8 xs12 >
                                     <v-card-text>
 
                                         <div class=" titulo text-md-center display-2">Juliana que bica</div>
