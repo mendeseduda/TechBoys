@@ -4,20 +4,22 @@
             <v-layout column>
                 
                 <v-flex py-2>
-                        <v-card style="border-radius: 140px 140px 140px 140px / 140px 140px 140px 140px;" class="pa-2">
-                            <v-layout row align-center reverse>
-                                <v-flex xs3 align-content-space-around>
-                                        <v-card style="border-radius:50%;" fluid>
+                        <v-card style="border-radius: 210px 210px 210px 210px / 210px 210px 210px 210px;" class="pa-2" >
+                            <v-layout row wrap align-center reverse>
+                                <v-flex xs12 md3 align-content-space-around>
+                                        
                                             <v-img   
+                                            style="border-radius:50%;"                                            
                                             src='../../public/assets/images/musastranho.jpg'>
                                             </v-img>        
-                                        </v-card>
+                                        
                                 </v-flex >
-                                <v-flex xs8 >
-                                    <v-card-text class="tentativa">
+                                <v-flex md8 xs12  >
+                                    <v-card-text>
                                         <h1 class="text-md-center display-2">Juliana que bica</h1>
                                         <v-card-text style="text-align: center;" class="display-1">
-                                           Vinda dos céus em busca de afeto, esta foi a primeira forma a se manisfestar..
+                                           Vinda dos céus em busca de afeto, esta foi a primeira forma a se manisfestar.
+                                           
                                         </v-card-text>
                                     </v-card-text>
 
@@ -56,6 +58,24 @@
 
 <script>
 export default{
-    name: "Julianimals"
+    name: "Julianimals",
+    data(){
+        return{
+            coluna: false,
+            widthTela: 0
+        }
+    }, 
+    created: function (){
+        window.onresize = function () {
+            console.log('aaa');
+            
+            this.widthTela = window.innerWidth;
+            if (window.innerWidth  <=500)
+                this.coluna = true;
+                else
+                this.coluna = false;
+
+        }
+    }
 }
 </script>
