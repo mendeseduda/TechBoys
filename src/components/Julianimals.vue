@@ -17,7 +17,7 @@
                                     <v-card-text class="tentativa">
                                         <h1 class="text-md-center display-2">Juliana que bica</h1>
                                         <v-card-text style="text-align: center;" class="display-1">
-                                           Vinda dos céus em busca de afeto, esta foi a primeira forma a se manisfestar.
+                                           Vinda dos céus em busca de afeto, esta foi a primeira forma a se manisfestar..
                                         </v-card-text>
                                     </v-card-text>
 
